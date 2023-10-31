@@ -33,13 +33,31 @@ public class MainService : IMainService
 
             if (choice == "1")
             {
-                var movie = _context.GetById(1);
-                Console.WriteLine($"Your movie is {movie.Title}");
+                string movieID;
+                do
+                {
+                    Console.WriteLine("Please enter a movie ID: ");
+                    movieID = Console.ReadLine();
+                    try
+                    {
+                        var movie = _context.GetById(Convert.ToInt32(movieID));
+                        if (movie != null)
+                            Console.WriteLine($"Your movie is {movie.Title}");
+                        else
+                            Console.WriteLine($"A movie with ID {movieID} does not exist.");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Please enter a valid movie ID.");
+                        continue;
+                    }
+
+                } while (movieID == "");
             }
 
             else if (choice == "2")
             {
-                Console.WriteLine("Please enter the movie title: ");
+                Console.WriteLine("Please enter the movie title:");
                 var user_movie = Console.ReadLine().ToUpper();
                 var movie = _context.GetByTitle(user_movie);
 
