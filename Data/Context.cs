@@ -30,13 +30,13 @@ namespace ContextExample.Data
 
         public Movie GetByTitle(string title)
         {
-            return Movies.FirstOrDefault(x => x.Title == title);
+            return Movies.FirstOrDefault(x => x.Title.ToUpper() == title);
         }
 
         public List<Movie> FindMovie(string title)
         {
-            // find by title - could return more than one item
-            return new List<Movie>();
+            var movies = Movies.Where(x => x.Title.ToUpper().Contains(title)).ToList();
+            return movies;
         }
     }
 }
