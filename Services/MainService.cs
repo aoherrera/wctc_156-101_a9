@@ -15,7 +15,7 @@ namespace ContextExample.Services;
 /// </summary>
 public class MainService : IMainService
 {
-    private readonly IContext _context;
+    private readonly IContext _context; 
 
     public MainService(IContext context)
     {
@@ -42,13 +42,13 @@ public class MainService : IMainService
                     {
                         var movie = _context.GetById(Convert.ToInt32(movieID));
                         if (movie != null)
-                            Console.WriteLine($"Your movie is {movie.Title}");
+                            Console.WriteLine($"Your movie is {movie.Title}.");
                         else
                             Console.WriteLine($"A movie with ID {movieID} does not exist.");
                     }
                     catch
                     {
-                        Console.WriteLine("Please enter a valid movie ID.");
+                        Console.WriteLine("This is not a valid movie ID.");
                         continue;
                     }
 
@@ -63,7 +63,7 @@ public class MainService : IMainService
 
                 if (movie != null)
                 {
-                    Console.WriteLine($"Your movie is {movie.Title}");
+                    Console.WriteLine($"Your movie is {movie.Title}.");
                 }
                 else
                 {
@@ -82,7 +82,7 @@ public class MainService : IMainService
                 {
                     foreach (Movie movie in movies)
                     {
-                        Console.WriteLine(movie.Title);
+                        Console.WriteLine($"Your movie is {movie.Title}.");
                     }
 
                 }
@@ -92,6 +92,7 @@ public class MainService : IMainService
 
             else if (choice == "4")
                 break;
+
             else
                 Console.WriteLine("Please enter a valid selection.\n");
         }
